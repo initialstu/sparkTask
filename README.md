@@ -22,4 +22,4 @@ val rdd = sparkSession.sparkContext.parallelize(Seq(
     }).foreach(println(_))
 ```
 本地执行结果
-
+![a](a.png)
