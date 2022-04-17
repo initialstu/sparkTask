@@ -1,6 +1,7 @@
+package org.bigdata.sparkjob
+
 import org.apache.spark.SparkConf
-import org.apache.spark.sql.types.{StructField, StructType}
-import org.apache.spark.sql.{Row, SparkSession}
+import org.apache.spark.sql.SparkSession
 
 object RddIndex {
 
@@ -22,7 +23,7 @@ object RddIndex {
 
     rdd.flatMap(row => {
       row._2.split(" ").map(r => ((row._1, r), 1))
-    }).reduceByKey(_+_).map(r => {
+    }).reduceByKey(_ + _).map(r => {
       (r._1._2, (r._1._1, r._2))
     }).aggregateByKey(collection.mutable.HashSet[(Int, Int)]())((S, e) => {
       S += e

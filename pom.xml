@@ -65,6 +65,11 @@
             <artifactId>hadoop-hdfs</artifactId>
             <version>3.3.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.scopt</groupId>
+            <artifactId>scopt_2.12</artifactId>
+            <version>3.7.1</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -131,7 +136,30 @@
                     </execution>
                 </executions>
             </plugin>
-
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>3.2.2</version>
+                <configuration>
+                    <scalaCompatVersion>${scala.binary.version}</scalaCompatVersion>
+                    <scalaVersion>${scala.version}</scalaVersion>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>scala-compile-first</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                            <goal>compile</goal>
+                            <goal>doc-jar</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>apidocs</outputDirectory>
+                            <reportOutputDirectory>${project.reporting.outputDirectory}/apidocs</reportOutputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
