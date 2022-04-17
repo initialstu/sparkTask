@@ -26,7 +26,7 @@ val rdd = sparkSession.sparkContext.parallelize(Seq(
 
 spark-submit提交命令
 ```shell
-spark-submit --class org.bigdata.sparkjob.RddIndex --master local SparkJob-1.0-SNAPSHOT.jar
+spark-submit --class org.bigdata.sparkjob.RddIndex --master local /home/student3/chaicq/sparkJob/SparkJob-1.0-SNAPSHOT.jar
 ```
 集群执行截图
 ![a1](a1.png)
@@ -106,7 +106,7 @@ SparkDistCp.scala核心代码
 
 spark-submit提交命令
 ```shell
-spark-submit --class org.bigdata.sparkjob.SparkDistCp --master local SparkJob-1.0-SNAPSHOT.jar --src /user/chaicq/source-file --dst /user/chaicq/target-file --m 2
+spark-submit --class org.bigdata.sparkjob.SparkDistCp --master local /home/student3/chaicq/sparkJob/SparkJob-1.0-SNAPSHOT.jar --src /user/chaicq/source-file --dst /user/chaicq/target-file --m 2
 ```
 集群执行截图
 ![b](b.png)
